@@ -1,11 +1,7 @@
 import redis
-# Redis connection details
+
 HOST = "localhost"
 PORT = 6379
-
-# TODO: INSERT DATA FROM FILE
-# unix2dos animals.txt
-# cat animals.txt | redis-cli --pipe
 
 animals = redis.Redis(host=HOST, port=PORT, db=0, decode_responses=True)
 adjectives = redis.Redis(host=HOST, port=PORT, db=1, decode_responses=True)
