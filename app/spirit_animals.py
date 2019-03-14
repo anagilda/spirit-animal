@@ -7,7 +7,8 @@ animals = redis.Redis(host=HOST, port=PORT, db=0, decode_responses=True)
 adjectives = redis.Redis(host=HOST, port=PORT, db=1, decode_responses=True)
 sessions = redis.Redis(host=HOST, port=PORT, db=2)
 
-N_ANIMALS = len(animals.keys())
+NUM_ANIMALS = len(animals.keys())
+NUM_ADJECTIVES = len(adjectives.keys())
 
 def animal_value(name):
     '''
