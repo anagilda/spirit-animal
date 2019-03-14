@@ -17,8 +17,8 @@ HOST = "localhost"
 PORT = 6379
 
 # TODO: INSERT DATA FROM FILE
-# cat animals.txt | redis-cli --pipe
 # unix2dos animals.txt
+# cat animals.txt | redis-cli --pipe
 
 try:
     redis_db0 = redis.Redis(host=HOST, port=PORT, db=0)
