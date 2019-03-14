@@ -9,7 +9,10 @@ app = Flask(__name__)
     
 @app.route("/")
 def homepage():
-    return str(N_ANIMALS)
+    with open(os.path.join(os.pardir, 'readme.md'), 'r') as file:
+        content = file.read()
+        content = markdown.markdown(content)
+    return render_template('index.html', instructions=Markup(content))
 
 @app.route('/spirit-animal/<name>')
 def spirit_animal(name):

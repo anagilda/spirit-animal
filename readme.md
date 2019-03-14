@@ -16,11 +16,11 @@ _Note: steps 1 & 2 only needed once._
 
 2. Insert data to Redis.
 
-    ```
-    cat animals.txt | redis-cli --pipe
-    cat adjectives.txt | redis-cli --pipe
-    ```
+        cat animals.txt | redis-cli -n 0 --pipe
+        cat adjectives.txt | redis-cli -n 1 --pipe
     
 3. Run the application.
-
-    `python run.py`
+    
+        cd app
+        python run.py
+    
