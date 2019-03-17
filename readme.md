@@ -12,7 +12,7 @@ _Note: steps 1 & 2 only needed once._
 
 1. Install requirements.
 
-    `pip install -r requirements.txt`
+        pip install -r requirements.txt
 
 2. Insert data to Redis.
 

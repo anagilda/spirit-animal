@@ -16,14 +16,25 @@ def homepage():
 
 @app.route('/spirit-animal/<name>')
 def spirit_animal(name):
-    animal_index = animal_value(name) % NUM_ANIMALS
-    adj_index = adjective_value(name) % NUM_ADJECTIVES
-    return jsonify(
-        name = name, 
-        spirit_animal = ' '.join([
-            adjectives.get(adj_index), animals.get(animal_index)
-        ])
-    )
+    overlimit, ttl = check_ip_limit(request.remote_addr)
+    if not overlimit:
+        animal_index = animal_value(name) % NUM_ANIMALS
+        adj_index = adjective_value(name) % NUM_ADJECTIVES
+        return jsonify(
+            name = name, 
+            spirit_animal = ' '.join([
+                adjectives.get(adj_index), animals.get(animal_index)
+            ])
+        ), 200
+    else:
+        ttl_mins = ttl//60
+        ttl_sec = (ttl-ttl_mins) % 60
+        return jsonify(
+            error = (
+                'Your limit of requests for this session has been reached. '
+                + 'Try again in {} mins and {} secs.'.format(ttl_mins, ttl_sec)
+            )
+        ), 401
 
 if __name__ == '__main__':
     app.run()
