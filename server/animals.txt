@@ -1,7 +1,7 @@
 set 0 "Cougar"
 set 1 "Dolphin"
 set 2 "Deer"
-set 3 "Dragongly"
+set 3 "Dragonfly"
 set 4 "Frog"
 set 5 "Butterfly"
 set 6 "Frog"

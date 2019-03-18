@@ -1,14 +1,15 @@
+import os
+import config
 import redis
 
-LIMIT = 3 # 10
-TIME_LIMIT = 30 # 300  
+if os.environ.get('ENV') == 'production':
+    c = config.ProductionConfig()
+else:
+    c = config.DevelopmentConfig()
 
-HOST = "localhost"
-PORT = 6379
-
-animals = redis.Redis(host=HOST, port=PORT, db=0, decode_responses=True)
-adjectives = redis.Redis(host=HOST, port=PORT, db=1, decode_responses=True)
-sessions = redis.Redis(host=HOST, port=PORT, db=2, decode_responses=True)
+animals = redis.from_url(url=c.REDIS_URL, db=0, decode_responses=True)
+adjectives = redis.from_url(url=c.REDIS_URL, db=1, decode_responses=True)
+sessions = redis.from_url(url=c.REDIS_URL, db=2, decode_responses=True)
 
 NUM_ANIMALS = len(animals.keys())
 NUM_ADJECTIVES = len(adjectives.keys())
@@ -32,9 +33,9 @@ def adjective_value(name):
     Requires: name (str) - someone's name.
     Ensures: an integer with the calculation obtained for the given name.
     '''
-    res = 2 * ord(name[0]) - 1
-    for letter in name.lower():
-        res += ord(letter)
+    res = 0
+    for pos, letter in enumerate(name.lower()):
+        res += (pos+2) * ord(letter)
     return res
 
 def check_ip_limit(ip):
@@ -52,11 +53,11 @@ def check_ip_limit(ip):
     overlimit = False
     ip_requests = sessions.get(ip)
     if ip_requests:
-        if int(ip_requests) < LIMIT:
+        if int(ip_requests) < c.LIMIT:
             sessions.incr(ip)
         else:
             overlimit = True
     else:
         sessions.incr(ip)
-        sessions.expire(ip, TIME_LIMIT)
+        sessions.expire(ip, c.TIME_LIMIT)
     return overlimit, sessions.ttl(ip)

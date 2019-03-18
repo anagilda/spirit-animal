@@ -6,6 +6,7 @@ import os
 from spirit_animals import *
 
 app = Flask(__name__)
+app.debug = False
     
 @app.route("/")
 def homepage():
