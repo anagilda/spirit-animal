@@ -1,14 +1,26 @@
 # Spirit Animal
 
-### Using the app
+## Using the app
 
-* Coming soon...
+_Note: [base_url] represents either a deployed app url or a localhost url._
 
+_Note: { } = required parameter._
 
-### Running locally
+### **GET /spirit-animal/{name}**
+
+Example usage :
+
+[[base_url]/spirit-animal/Ana](https://spirit-animal.herokuapp.com/spirit-animal/ana)
+
+Example output:
+```json
+{"name":"Ana","spirit_animal":"Fruity Owl"}
+```
+
+## Running the app locally
 _Note: you must have Python 3 and Redis installed._
 
-_Note: steps 1 & 2 only needed once._
+#### Initial setup
 
 1. Install requirements.
 
@@ -16,11 +28,12 @@ _Note: steps 1 & 2 only needed once._
 
 2. Insert data to Redis.
 
-        cat animals.txt | redis-cli -n 0 --pipe
-        cat adjectives.txt | redis-cli -n 1 --pipe
+        cat server/animals.txt | redis-cli -n 0 --pipe
+        cat server/adjectives.txt | redis-cli -n 1 --pipe
     
-3. Run the application.
+#### Running the application
+
+* Open the terminal in the `server` folder and run:    
     
-        cd app
-        python run.py
+        flask run
     
