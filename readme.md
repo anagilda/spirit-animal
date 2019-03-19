@@ -1,5 +1,9 @@
 # Spirit Animal
 
+Simple app that computes a random adjective + animal for a given name.
+
+This app has a limit of requests per session (10 requests for every 5 minutes per ip address). 
+
 ## Using the app
 
 _Note: [base_url] represents either a deployed app url or a localhost url._
