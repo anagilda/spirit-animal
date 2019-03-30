@@ -1,5 +1,7 @@
 # Spirit Animal
 
+[Live demo](https://spirit-animal.herokuapp.com/)
+
 Simple app that computes a random adjective + animal for a given name.
 
 This app has a limit of requests per session (10 requests for every 5 minutes per ip address). 
