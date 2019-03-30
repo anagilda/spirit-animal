@@ -14,7 +14,7 @@ _Note: { } = required parameter._
 
 Example usage :
 
-[[base_url]/spirit-animal/Ana](https://spirit-animal.herokuapp.com/spirit-animal/ana)
+[[base_url]/spirit-animal/Ana](https://spirit-animal.herokuapp.com/spirit-animal/Ana)
 
 Example output:
 ```json

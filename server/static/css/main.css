@@ -1,0 +1,44 @@
+@import url(https://fonts.googleapis.com/css?family=Ubuntu:400,700);
+
+:root {
+    --light-coral: rgb(255,186,151);
+    --coral: rgb(250, 133, 123);
+    --dark-coral: rgb(252,84,86);
+    --main-color: rgb(212, 212, 212);
+}
+html {
+    font-family: "Ubuntu", sans-serif;
+    color: var(--main-color);
+}
+
+body {
+    max-width: 700px;
+    margin: auto;
+    padding: 15px;
+    background-color: black;
+    background-image: url(../img/main.jpg);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: bottom 0px right 0px;
+}
+
+h1 {
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    background: linear-gradient(to right, var(--light-coral) 0%, var(--dark-coral) 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 50px;
+}
+
+h2 {
+    margin-top: 50px;
+    letter-spacing: 0.1em;
+}
+
+strong, a {
+    color: var(--coral);
+}
