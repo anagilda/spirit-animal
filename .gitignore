@@ -1,8 +1,17 @@
 # vs code
 .vscode
 
+# pycharm
+.idea
+
+# virtual environment
+venv
+
 # Logs
 *.log
 
 # Deployment
 heroku
+
+# cache
+__pycache__
